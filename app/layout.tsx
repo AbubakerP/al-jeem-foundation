@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import Script from "next/script";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -17,21 +16,21 @@ export const metadata: Metadata = {
   title: "Al Jeem Foundation",
   description:
     "Al Jeem Foundation — serving humanity and strengthening communities.",
+  other: {
+    "google-adsense-account": "ca-pub-7544403759610843",
+  },
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
   return (
     <html lang="en">
-  <body>
-    {children}
-
-    <Script
-      async
-      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7544403759610843"
-      crossOrigin="anonymous"
-      strategy="afterInteractive"
-    />
-  </body>
-</html>
+      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+        {children}
+      </body>
+    </html>
   );
 }
